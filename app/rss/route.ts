@@ -1,42 +1,39 @@
-import { baseUrl } from 'app/sitemap'
-import { getBlogPosts } from 'app/blog/utils'
+import { getAllPlanets } from "app/planetas/utils";
+import { baseUrl } from "app/sitemap";
 
 export async function GET() {
-  let allBlogs = await getBlogPosts()
+	let allBlogs = await getAllPlanets();
 
-  const itemsXml = allBlogs
-    .sort((a, b) => {
-      if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
-        return -1
-      }
-      return 1
-    })
-    .map(
-      (post) =>
-        `<item>
+	const itemsXml = allBlogs
+		.sort((a, b) => {
+			if (a.metadata.ua < b.metadata.ua) {
+				return -1;
+			}
+			return 1;
+		})
+		.map(
+			(post) =>
+				`<item>
           <title>${post.metadata.title}</title>
-          <link>${baseUrl}/blog/${post.slug}</link>
-          <description>${post.metadata.summary || ''}</description>
-          <pubDate>${new Date(
-            post.metadata.publishedAt
-          ).toUTCString()}</pubDate>
+          <link>${baseUrl}/planetas/${post.slug}</link>
+          <description>${post.metadata.summary || ""}</description>
         </item>`
-    )
-    .join('\n')
+		)
+		.join("\n");
 
-  const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
+	const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
   <rss version="2.0">
     <channel>
-        <title>My Portfolio</title>
+        <title>Sistema Solar</title>
         <link>${baseUrl}</link>
-        <description>This is my portfolio RSS feed</description>
+        <description>Informacion acerca de nuestro sistema solar.</description>
         ${itemsXml}
     </channel>
-  </rss>`
+  </rss>`;
 
-  return new Response(rssFeed, {
-    headers: {
-      'Content-Type': 'text/xml',
-    },
-  })
+	return new Response(rssFeed, {
+		headers: {
+			"Content-Type": "text/xml",
+		},
+	});
 }
