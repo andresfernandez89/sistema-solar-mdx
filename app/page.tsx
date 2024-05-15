@@ -12,6 +12,13 @@ export default function Page() {
 				<em>Lo sabias?</em>
 			</p>
 			<div className="my-8">
+				<div className="mb-6">
+					<h2 className="text-lg font-semibold mb-2">Unidades Astronómicas</h2>
+					<p className="text-sm font-extralight italic text-neutral-400">
+						* Una unidad astronómica (UA) es la distancia promedio entre la Tierra y el Sol,
+						aproximadamente 149.6 millones de kilómetros.
+					</p>
+				</div>
 				<BlogPlanets />
 			</div>
 		</section>
