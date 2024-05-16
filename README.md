@@ -1,42 +1,39 @@
-# Portfolio Blog Starter
+# SOLAR SYSTEM - NEXT JS WITH MDX
 
-This is a porfolio site template complete with a blog. Includes:
-
-- MDX and Markdown support
-- Optimized for SEO (sitemap, robots, JSON-LD schema)
-- RSS Feed
-- Dynamic OG images
-- Syntax highlighting
-- Tailwind v4
-- Vercel Speed Insights / Web Analytics
-- Geist font
+Website with information about the solar system and its countries, using Next JS with MDX.
 
 ## Demo
 
-https://portfolio-blog-starter.vercel.app
+## Tech Stack
 
-## How to Use
+Next JS, TypeScript, Tailwind, MDX.
 
-You can choose from one of the following two methods to use this repository:
+## Run Locally
 
-### One-Click Deploy
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/blog&project-name=blog&repository-name=blog)
-
-### Clone and Deploy
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
+Clone the project
 
 ```bash
-pnpm create next-app --example https://github.com/vercel/examples/tree/main/solutions/blog blog
+  git clone https://github.com/andresfernandez89/sistema-solar-mdx.git
 ```
 
-Then, run Next.js in development mode:
+Go to the project directory
 
 ```bash
-pnpm dev
+  cd sistema-solar-mdx
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/templates) ([Documentation](https://nextjs.org/docs/app/building-your-application/deploying)).
+Install dependencies
+
+```bash
+  pnpm install
+```
+
+Start the server
+
+```bash
+  pnpm dev
+```
+
+## 🔗 Links
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andresfernandez89/)
