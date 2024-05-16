@@ -1,3 +1,4 @@
+"use server";
 import { CustomMDX } from "app/components/mdx";
 import { getAllPlanets } from "app/planetas/utils";
 import { baseUrl } from "app/sitemap";
