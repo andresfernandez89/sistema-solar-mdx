@@ -1,4 +1,3 @@
-"use server";
 import { CustomMDX } from "app/components/mdx";
 import { getAllPlanets } from "app/planetas/utils";
 import { baseUrl } from "app/sitemap";
@@ -6,6 +5,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
+	"use server";
 	let posts = getAllPlanets();
 
 	return posts.map((post) => ({
@@ -14,6 +14,7 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params }) {
+	"use server";
 	let post = getAllPlanets().find((post) => post.slug === params.slug);
 	if (!post) {
 		return;
@@ -46,6 +47,7 @@ export function generateMetadata({ params }) {
 }
 
 export default function Planets({ params }) {
+	"use server";
 	let post = getAllPlanets().find((post) => post.slug === params.slug);
 
 	if (!post) {
