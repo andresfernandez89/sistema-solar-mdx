@@ -1,8 +1,8 @@
 import { getAllPlanets } from "app/planetas/utils";
 import Link from "next/link";
 
-export function BlogPlanets() {
-	let allPlanets = getAllPlanets();
+export async function BlogPlanets() {
+	const allPlanets = await Promise.all(await getAllPlanets());
 
 	return (
 		<div>

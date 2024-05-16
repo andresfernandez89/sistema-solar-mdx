@@ -5,17 +5,17 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
-	"use server";
-	let posts = getAllPlanets();
+	const planets = await Promise.all(await getAllPlanets());
 
-	return posts.map((post) => ({
+	return planets.map((post) => ({
 		slug: post.slug,
 	}));
 }
 
-export function generateMetadata({ params }) {
-	"use server";
-	let post = getAllPlanets().find((post) => post.slug === params.slug);
+export async function generateMetadata({ params }) {
+	const planets = await Promise.all(await getAllPlanets());
+	const post = planets.find((post) => post.slug === params.slug);
+
 	if (!post) {
 		return;
 	}
@@ -46,9 +46,9 @@ export function generateMetadata({ params }) {
 	};
 }
 
-export default function Planets({ params }) {
-	"use server";
-	let post = getAllPlanets().find((post) => post.slug === params.slug);
+export default async function Planets({ params }) {
+	const planets = await Promise.all(await getAllPlanets());
+	const post = planets.find((post) => post.slug === params.slug);
 
 	if (!post) {
 		notFound();

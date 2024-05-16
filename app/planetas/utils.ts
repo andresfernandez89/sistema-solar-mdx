@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 
 type Metadata = {
@@ -27,19 +27,19 @@ function parseFrontmatter(fileContent: string) {
 	return { metadata: metadata as Metadata, content };
 }
 
-function getMDXFiles(dir) {
-	return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
+async function getMDXFiles(dir: string) {
+	return (await fs.readdir(dir)).filter((file) => path.extname(file) === ".mdx");
 }
 
-function readMDXFile(filePath) {
-	let rawContent = fs.readFileSync(filePath, "utf-8");
+async function readMDXFile(filePath) {
+	let rawContent = await fs.readFile(filePath, "utf-8");
 	return parseFrontmatter(rawContent);
 }
 
-function getMDXData(dir) {
-	let mdxFiles = getMDXFiles(dir);
-	return mdxFiles.map((file) => {
-		let { metadata, content } = readMDXFile(path.join(dir, file));
+async function getMDXData(dir) {
+	let mdxFiles = await getMDXFiles(dir);
+	return mdxFiles.map(async (file) => {
+		let { metadata, content } = await readMDXFile(path.join(dir, file));
 		let slug = path.basename(file, path.extname(file));
 
 		return {
@@ -50,6 +50,6 @@ function getMDXData(dir) {
 	});
 }
 
-export function getAllPlanets() {
-	return getMDXData(path.join(process.cwd(), "app", "planetas", "posts"));
+export async function getAllPlanets() {
+	return await getMDXData(path.join(process.cwd(), "app", "planetas", "posts"));
 }
