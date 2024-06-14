@@ -4,6 +4,10 @@ Website with information about the solar system and its countries, using Next JS
 
 ## Demo
 
+https://sistema-solar-mdx.vercel.app/
+
+![GIF demo](https://drive.google.com/uc?export=view&id=1RpKOY4zDG7SV3q874okaWvQgEeTevN8v)
+
 ## Tech Stack
 
 Next JS, TypeScript, Tailwind, MDX.
